@@ -4,7 +4,7 @@
 
 ## Tabla de Contenidos
 
-* [Porque Docker](#why-docker)
+* [Porqué Docker](#why-docker)
 * [Prerequisitos](#prerequisites)
 * [Instalación](#installation)
 * [Containers](#containers)
@@ -21,31 +21,31 @@
 * [Tips](#tips)
 * [Contribucipnes](#contributing)
 
-## Porque Docker
+## Porqué Docker
 
-"With Docker, developers can build any app in any language using any toolchain. “Dockerized” apps are completely portable and can run anywhere - colleagues’ OS X and Windows laptops, QA servers running Ubuntu in the cloud, and production data center VMs running Red Hat.
+"Con Docker, los desarrolladores pueden construir cualquier app en cualquier lenguaje usando cualquier toolchain. Las aplicaciones “Dockerizadas” son completamente portables y puebden correr en cualquier lado - las laptops con OS X y Windows de los colegas, servidores de QA corriendo Ubuntu en la nube, y VMs corriendo Red Hat en data centers de producción.
 
 Developers can get going quickly by starting with one of the 13,000+ apps available on Docker Hub. Docker manages and tracks changes and dependencies, making it easier for sysadmins to understand how the apps that developers build work. And with Docker Hub, developers can automate their build pipeline and share artifacts with collaborators through public or private repositories.
 
 Docker helps developers build and ship higher-quality applications, faster." -- [What is Docker](https://www.docker.com/what-docker#copy1)
 
-## Prerequisites
+## Prerequisitos
 
-I use [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) with the [Docker plugin](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#docker) for autocompletion of docker commands. YMMV.
+El autor usa [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) con el [plugin de Docker](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#docker) para autocompletar los commandos de docker. YMMV.
 
 ### Linux
 
-The 3.10.x kernel is [the minimum requirement](https://docs.docker.com/engine/installation/binaries/#check-kernel-dependencies) for Docker.
+El kernel 3.10.x es [el requerimiento mínimo](https://docs.docker.com/engine/installation/binaries/#check-kernel-dependencies) para Docker.
 
 ### MacOS
 
- 10.8 “Mountain Lion” or newer is required.
+ 10.8 “Mountain Lion” o más nuevo.
 
-## Installation
+## Instalación
 
 ### Linux
 
-Quick and easy install script provided by Docker:
+Script de instalación rápida y fácil provista por Docker:
 
 ```
 curl -sSL https://get.docker.com/ | sh
@@ -85,7 +85,7 @@ If you are a complete Docker newbie, you should probably follow the [series of t
 
 [Your basic isolated Docker process](http://etherealmind.com/basics-docker-containers-hypervisors-coreos/). Containers are to Virtual Machines as threads are to processes. Or you can think of them as chroots on steroids.
 
-### Lifecycle
+### Ciclo de vida
 
 * [`docker create`](https://docs.docker.com/engine/reference/commandline/create) creates a container but does not start it.
 * [`docker rename`](https://docs.docker.com/engine/reference/commandline/rename/) allows the container to be renamed.
@@ -105,7 +105,7 @@ There's also a [logging driver](https://docs.docker.com/engine/admin/logging/ove
 
 Another useful option is `docker run --name yourname docker_image` because when you specify the `--name` inside the run command this will allow you to start and stop a container by calling it with the name the you specified when you created it.
 
-### Starting and Stopping
+### Arranque y Detención
 
 * [`docker start`](https://docs.docker.com/engine/reference/commandline/start) starts a container so it is running.
 * [`docker stop`](https://docs.docker.com/engine/reference/commandline/stop) stops a running container.
@@ -122,7 +122,7 @@ If you want to expose container ports through the host, see the [exposing ports]
 
 Restart policies on crashed docker instances are [covered here](http://container42.com/2014/09/30/docker-restart-policies/).
 
-#### CPU Constraints
+#### Restricciones de la CPU
 
 You can limit CPU, either using a percentage of all CPUs, or by using specific cores.  
 
@@ -140,7 +140,7 @@ docker run -ti --cpuset-cpus=0,4,6 agileek/cpuset-test
 
 Note that Docker can still **see** all of the CPUs inside the container -- it just isn't using all of them.  See https://github.com/docker/docker/issues/20770 for more details.
 
-#### Memory Constraints
+#### Restricciones de la Memoria
 
 You can also set [memory constraints](https://docs.docker.com/engine/reference/run/#/user-memory-constraints) on Docker:
 
@@ -189,12 +189,12 @@ https://docs.docker.com/engine/reference/run/#/runtime-privilege-and-linux-capab
 
 `docker stats --all` shows a running list of containers.
 
-### Import / Export
+### Importar / Exportar
 
 * [`docker cp`](https://docs.docker.com/engine/reference/commandline/cp) copies files or folders between a container and the local filesystem.
 * [`docker export`](https://docs.docker.com/engine/reference/commandline/export) turns container filesystem into tarball archive stream to STDOUT.
 
-### Executing Commands
+### Ejecución de Comandos
 
 * [`docker exec`](https://docs.docker.com/engine/reference/commandline/exec) to execute a command in container.
 
@@ -204,7 +204,7 @@ To enter a running container, attach a new shell process to a running container 
 
 Images are just [templates for docker containers](https://docs.docker.com/engine/understanding-docker/#how-does-a-docker-image-work).
 
-### Lifecycle
+### Ciclo de vida
 
 * [`docker images`](https://docs.docker.com/engine/reference/commandline/images) shows all images.
 * [`docker import`](https://docs.docker.com/engine/reference/commandline/import) creates an image from a tarball.
@@ -219,11 +219,11 @@ Images are just [templates for docker containers](https://docs.docker.com/engine
 * [`docker history`](https://docs.docker.com/engine/reference/commandline/history) shows history of image.
 * [`docker tag`](https://docs.docker.com/engine/reference/commandline/tag) tags an image to a name (local or registry).
 
-### Cleaning up
+### Limpieza
 
 While you can use the `docker rmi` command to remove specific images, there's a tool called [docker-gc](https://github.com/spotify/docker-gc) that will clean up images that are no longer used by any containers in a safe manner.
 
-### Load/Save image
+### Cargar/Guardar una imagen
 
 Load an image from file:
 ```
@@ -235,7 +235,7 @@ Save an existing image:
 docker save my_image:my_tag | gzip > my_image.tar.gz
 ```
 
-### Import/Export container
+### Importar/Exportar un container
 
 Import a container as an image from file:
 ```
@@ -256,7 +256,7 @@ Importing a container as an image using the `import` command creates a new image
 
 Docker has a [networks](https://docs.docker.com/engine/userguide/networking/) feature. Not much is known about it, so this is a good place to expand the cheat sheet. There is a note saying that it's a good way to configure docker containers to talk to each other without using ports. See [working with networks](https://docs.docker.com/engine/userguide/networking/work-with-networks/) for more details.
 
-### Lifecycle
+### Ciclo de vida
 
 * [`docker network create`](https://docs.docker.com/engine/reference/commandline/network_create/)
 * [`docker network rm`](https://docs.docker.com/engine/reference/commandline/network_rm/)
@@ -306,19 +306,19 @@ Also see the [mailing list](https://groups.google.com/a/dockerproject.org/forum/
 
 ## Dockerfile
 
-[The configuration file](https://docs.docker.com/engine/reference/builder/). Sets up a Docker container when you run `docker build` on it. Vastly preferable to `docker commit`.  
+[El archivo de configuración](https://docs.docker.com/engine/reference/builder/). Configura un container Docker cuando ejecutas `docker build` en el mismo directorio. Muy preferible a `docker commit`.  
 
-Here are some common text editors and their syntax highlighting modules you could use to create Dockerfiles:
-* If you use [jEdit](http://jedit.org), I've put up a syntax highlighting module for [Dockerfile](https://github.com/wsargent/jedit-docker-mode) you can use.
+Aquí hay una serie de editores de texto comunes y su módulos de resalatado de sintaxis que podrías usar para crear Dockerfiles:
+* Si usas [jEdit](http://jedit.org), el autor armó un módulo de resaltado de sintaxis para [Dockerfile](https://github.com/wsargent/jedit-docker-mode) que podés usar.
 * [Sublime Text 2](https://packagecontrol.io/packages/Dockerfile%20Syntax%20Highlighting)
 * [Atom](https://atom.io/packages/language-docker)
 * [Vim](https://github.com/ekalinin/Dockerfile.vim)
 * [Emacs](https://github.com/spotify/dockerfile-mode)
 * [TextMate](https://github.com/docker/docker/tree/master/contrib/syntax/textmate)
 * [VS Code](https://github.com/Microsoft/vscode-docker)
-* Also see [Docker meets the IDE](https://domeide.github.io/)
+* También mirá [Docker meets the IDE](https://domeide.github.io/)
 
-### Instructions
+### Instrucciones
 
 * [.dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
 * [FROM](https://docs.docker.com/engine/reference/builder/#from) Sets the Base Image for subsequent instructions.
